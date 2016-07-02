@@ -24,22 +24,22 @@ Game difficulty, ideally, increases as the user becomes comfortable at a given l
 
     - Inverses with a Tight Range of Integer Denominators (Denominator: 1-10)
 	- Inverses with Single Digit Decimal Denominators (Denominator: 0.1-0.9)
-	- Desired Outcome: Comfort with basic inverses
-	- Second Level
-	    - Inverses with a wider range of Integer Denominators (Denominator: 1-100)
-	    - Inverses with a wider range of Decimal Denominators (Denominator: 0.01 - 0.99)
-	    - Desired Outcome: Skill in mentally calculating inverses
-	- Third Level
-		- Inverses with a Broad Range of Decimal Denominators (Denominator: (0.1-0.9) * 10 ^ (-1 thru -9) )
-	    - Inverses with a Broad Range of Integer Denominators (Denominator: (0.1 - 9.9 * 10 ^ (0 thru 9) )
-	    - Desired Outcome: Scaling mental inverses using scientific notation
-	- Fourth Level
-        - Frequency of Unity Impedance given value of Capacitor ( |Z| = 1/ ( 2 * pi * f * C) = 1 ohm)
-	    - Capacitance of Unity Impedance given Frequency ( |Z| = 1/ ( 2 * pi * f * C) = 1 ohm)
-	    - Frequency of Unity Impedance given value of Inductor ( |Z| = ( 2 * pi * f * L) = 1 ohm )
-	    - Inductance of Unity Impedance given Frequency ( |Z| = ( 2 * pi * f * L) = 1 ohm)
-	    - Desired Outcome: Adding a simple multiplication (2* pi) to a scaled mental inverse
-	- Fifth Level
-	    - Picking a resistor to select a 3dB frequency given a capacitor and a frequency
-	    - Picking a resistor to select a 3dB frequency given an inductor and a frequency
-	    - Desired Outcome: Adding a larger scaling factor/multiplication to a scaled inverse
+	- __Desired Outcome:__ Comfort with basic inverses
+- Second Level
+    - Inverses with a wider range of Integer Denominators (Denominator: 1-100)
+    - Inverses with a wider range of Decimal Denominators (Denominator: 0.01 - 0.99)
+    - __Desired Outcome:__ Skill in mentally calculating inverses
+- Third Level
+	- Inverses with a Broad Range of Decimal Denominators (Denominator: (0.1-0.9) * 10 ^ (-1 thru -9) )
+    - Inverses with a Broad Range of Integer Denominators (Denominator: (0.1 - 9.9 * 10 ^ (0 thru 9) )
+    - __Desired Outcome:__ Scaling mental inverses using scientific notation
+- Fourth Level
+    - Frequency of Unity Impedance given value of Capacitor ( |Z| = 1/ ( 2 * pi * f * C) = 1 ohm)
+    - Capacitance of Unity Impedance given Frequency ( |Z| = 1/ ( 2 * pi * f * C) = 1 ohm)
+    - Frequency of Unity Impedance given value of Inductor ( |Z| = ( 2 * pi * f * L) = 1 ohm )
+    - Inductance of Unity Impedance given Frequency ( |Z| = ( 2 * pi * f * L) = 1 ohm)
+    - __Desired Outcome:__ Adding a simple multiplication (2* pi) to a scaled mental inverse
+- Fifth Level
+    - Picking a resistor to select a 3dB frequency given a capacitor and a frequency
+    - Picking a resistor to select a 3dB frequency given an inductor and a frequency
+    - __Desired Outcome:__ Adding a larger scaling factor/multiplication to a scaled inverse
