@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="./assets/stylesheets/bootstrap-responsive.min.css" />
+
+<script src="./jquery-1.9.1.js"></script>
+<script src="./calculator.js"></script>
+</head>
+
+<body onload="myFunction()">
+	<div class="container">
+        <div class="header clearfix">
+            <nav>
+				<ul class="nav nav-pills pull-right">
+	            <li class="nav-item">
+				    <a class="nav-link" href="./main.html">Home <span class="sr-only">(current)</span></a>
+				</li>
+	            <li class="nav-item active">
+	                <a class="nav-link" href="./about.html">About</a>
+	            </li>
+	            <li class="nav-item">
+		            <a class="nav-link" href="#">Contact</a>
+		        </li>
+		        </ul>
+	        </nav>
+	        <h3 class="text-muted">Passband</h3>
+        </div>
+
+		<div class="container">
+			<h2>A math game for engineers.</h2>
+			<h3>Overview</h3>
+			<p>Passband is an electrical engineering game designed to train you to estimate critical frequencies of first order electrical networks. It's great for anyone who wants to get better at any of the following:</p>
+			<ul>
+				<li>Mentally approximating inverses</li>
+				<li>Learning common electrical component values</li>
+				<li>Estimating the frequency response of a discrete, two-component passive network</li>
+			</ul>
+			<p>It's designed to step players through exercises to hone each of those skills, in that order.</p>
+			<h3>How It Works</h3>
+			<p>Passband is a browser game written in Javascript with a dash of HTML. (Eventually, this will include some more advanced web stuff to make it render prettily and transition between actions nicely.) On page load, the game generates a random number based on a default difficulty setting. It then presents this number in an HTML element with a challenge: "What is the inverse of this fraction?" Some additional information is also loaded into the page via hidden HTML elements; these are used after page submit to help check the user's answer. Users are then invited to check their answer by entering a value in the provided text box. This value is passed back to the game application by submission of the web form.</p>
+			<p>Since the goal of Passband is to teach estimation rather than rote memorization, the game assigns feedback to the user based on whether their answer is in the ballpark of the correct answer. "In the ballpark", in this case, means within +/-10% of the actual answer. To further increase the focus on estimation, the game only checks answers to within three decimal places.</p>
+			<p>Game difficulty, ideally, increases as the user becomes comfortable at a given level. Initially, we'll rely on the user to evaluate their own comfort level and pick their difficulty level accordingly. Eventually, "comfortable" will be evaluated using some sort of backend analytics that monitors their recent performance and their overall history, and then suggesting they move up a level.</p>
+		</div>
+	</div>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</body>
+</html>

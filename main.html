@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="./assets/stylesheets/bootstrap-responsive.min.css" />
+<link href="./narrow-jumbotron.css" rel="stylesheet">
+
+
+<script href="./passband.js"/>
+<script src="./jquery-1.9.1.js"></script>
+<script src="./calculator.js"></script>
+</head>
+
+<body onload="myFunction()">
+	<div class="container">
+        <div class="header clearfix">
+            <nav>
+				<ul class="nav nav-pills pull-right">
+	            <li class="nav-item active">
+				    <a class="nav-link" href="./main.html">Home <span class="sr-only">(current)</span></a>
+				</li>
+	            <li class="nav-item">
+	                <a class="nav-link" href="./about.html">About</a>
+	            </li>
+	            <li class="nav-item">
+		            <a class="nav-link" href="#">Contact</a>
+		        </li>
+		        </ul>
+	        </nav>
+	        <h3 class="text-muted">Passband</h3>
+        </div>
+
+        <div class="jumbotron">
+            <h1 class="display-3">Passband</h1>
+				<div class="span6 well">
+			        <div id="calc-board">
+				        <div class="row-fluid">
+				            <a href="#" class="btn" data-key="55">7</a>
+					        <a href="#" class="btn" data-key="56">8</a>
+					        <a href="#" class="btn" data-key="57">9</a>
+					    </div>
+				        <div class="row-fluid">
+				            <a href="#" class="btn" data-key="52">4</a>
+				            <a href="#" class="btn" data-key="53">5</a>
+				            <a href="#" class="btn" data-key="54">6</a>
+				        </div>
+			            <div class="row-fluid">
+							<a href="#" class="btn" data-key="49">1</a>
+						    <a href="#" class="btn" data-key="50">2</a>
+						    <a href="#" class="btn" data-key="51">3</a>
+					    </div>
+					    <div class="row-fluid">
+					        <a href="#" class="btn" data-key="46">.</a>
+					        <a href="#" class="btn" data-key="48">0</a>
+					    </div>
+					    <div class="row-fluid">
+					    	<a href="#" class="btn btn-primary" data-method="calculate" data-key="61">Check</a>
+					    </div>
+
+				    </div>
+		        </div>
+	    </div>
+
+
+		<p>Passband is a math game designed to help electrical engineers learn to eyeball the frequency response of RC/RL circuits.</p>
+		<p>Want to read our full design doc? Head over to the <a href="./about.html">About page</a> to learn a little more about us.</p>
+    </div>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</body>
+</html>

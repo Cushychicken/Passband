@@ -21,7 +21,6 @@ Game difficulty, ideally, increases as the user becomes comfortable at a given l
 ## Levels and Desired Outcomes
 
 - First Level
-
     - Inverses with a Tight Range of Integer Denominators (Denominator: 1-10)
 	- Inverses with Single Digit Decimal Denominators (Denominator: 0.1-0.9)
 	- __Desired Outcome:__ Comfort with basic inverses
