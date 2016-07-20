@@ -1,0 +1,10 @@
+#calculator-wrapper {
+  font-size: 42px;
+}
+#calculator-wrapper .uneditable-input {
+  height: 42px;
+  font-size: 42px;
+  line-height: 35px;
+  width: 100%;
+}
+
