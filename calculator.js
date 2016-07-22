@@ -33,6 +33,7 @@ var Calculator = {
   reset: function() {
     this.memory_value = '';
     this.results_value = '0';
+    this.update_memory();
     this.clear_history();
     this.refresh();
   },
@@ -106,7 +107,7 @@ var Calculator = {
 
 $(document).keypress(function(e) {
   var element = $('*[data-key="'+e.which+'"]');
-
+  console.log(element.html());
   var fun = function(element){
     // skip if this is no a functional button
     if (element.length == 0){ return true }
