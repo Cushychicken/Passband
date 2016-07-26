@@ -5,8 +5,8 @@
 	<link rel="stylesheet" type="text/css" href="./application.css">
     
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="./calculator.js"></script>
     <script src="./passband.js"></script>
+    <script src="./passband_engine.js"></script>
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -23,7 +23,7 @@
     </style>
 </head>
 
-<body onload="myFunction()">
+<body>
 	<div class="container">
         <div class="header clearfix">
             <nav>
@@ -45,6 +45,12 @@
         <div class="jumbotron">
             <h1 class="display-3">Passband</h1>
             <div class="hero-unit" id="calculator-wrapper">
+                <div class="row-fluid">
+                    <div class="span8 well">
+                        <div id="challenge-screen"></div>
+                    </div>
+                    
+                </div>
                 <div class="row-fluid">
                     <div class="span8 well">
                         <div id="calculator-screen">Text here!</div>
