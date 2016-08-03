@@ -11,9 +11,9 @@ var Passband = {
 	ans_lLim_value: 	'',
 
 	// DOM Variables
-	challenge_id: 	'challenge-screen', 
-	screen_id: 		'calculator-screen',
-	feedback_id:  	'feedback',
+	challenge_id: 	  'challenge-screen', 
+	screen_id: 		    'calculator-screen',
+	feedback_id:  	  'feedback',
 
 
 	challenge: function() {
@@ -26,34 +26,38 @@ var Passband = {
 	        answer = answer + 1;
 	    }
 	    
-	    this.challenge_value = answer ^ (10 * exp);
-	    this.update_challenge();
+	   this.challenge_value = answer * Math.pow(10, exp);
+	   this.update_challenge();
 	},
 
 	update_challenge: function() {
-		document.getElementById(this.challenge_id).innerHTML = this.challenge_value;
+		  document.getElementById(this.challenge_id).innerHTML = this.challenge_value;
 	},
 
 	put: function(value) {
-    	console.log("value:".concat(value));
     	this.memory_value += value;
-    	console.log("memory_value:".concat(this.memory_value));
    		this.update_memory();
-  	},
+  },
 
-  	update_memory: function() {
+  update_memory: function() {
     	document.getElementById(this.screen_id).innerHTML = this.memory_value;
-  	},
+  },
 
-  	reset: function() {
+  reset: function() {
 	    this.memory_value = '';
 	    this.results_value = '0';
 	    this.update_memory();
 	    this.clear_history();
 	    this.refresh();
-  	},
+  },
 
-	check: function() {}
+	check: function() {
+    if (Number(this.memory_value) === this.challenge_value) {
+      console.log("Correct!");
+    } else {
+      console.log("Not Correct.");
+    }
+  }
 
 }
 
