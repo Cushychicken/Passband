@@ -20,7 +20,7 @@ var Passband = {
 		// if easy - generate single digit integer inverse
 		// Difficulty should be passed as a key/value store with limits bounding the multiplier
  		//var exp = Math.floor(Math.random() * (max - min + 1)) + min;
-		var exp = 0;
+    var exp = 0;
 		var answer = Math.floor((Math.random() * 10));
 	    if (answer === 0) {
 	        answer = answer + 1;
@@ -54,8 +54,11 @@ var Passband = {
 	check: function() {
     if (Number(this.memory_value) === this.challenge_value) {
       console.log("Correct!");
+      document.getElementById(this.challenge_id).innerHTML = '<div class="alert alert-success" role="alert"><strong>Correct!</strong></div>';
+      return true;
     } else {
-      console.log("Not Correct.");
+      document.getElementById(this.challenge_id).innerHTML = '<div class="alert alert-danger" role="alert"><strong>Try again!</strong></div>';
+      return false;
     }
   }
 
@@ -63,7 +66,6 @@ var Passband = {
 
 $(document).keypress(function(e) {
   var element = $('*[data-key="'+e.which+'"]');
-  console.log(element.html());
   var fun = function(element){
     // skip if this is no a functional button
     if (element.length == 0){ return true }
@@ -72,8 +74,8 @@ $(document).keypress(function(e) {
       return Passband.put(Passband[element.data('constant')]);
     }
 
-    if (element.data('method') != undefined){
-      return Passband[element.data('method')]();
+    if ($(this).data('method') != undefined){
+      return Passband[$(this).data('method')]();
     }
 
     return Passband.put(element.html());
