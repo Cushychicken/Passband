@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Passband &mdash; RC Filter Trainer</title>
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+          integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="./application.css">
+
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .site-header {
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+            margin-bottom: 24px;
+        }
+
+        .site-header h3 {
+            margin: 0;
+            line-height: 34px;
+        }
+
+        /* Score bar */
+        #score-display {
+            font-size: 16px;
+            text-align: right;
+            line-height: 34px;
+        }
+
+        .score-item {
+            margin-left: 18px;
+        }
+
+        /* Challenge panel */
+        #challenge-screen {
+            min-height: 120px;
+            padding: 12px 0 6px;
+        }
+
+        .formula-hint {
+            font-size: 15px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .component-table {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 0 auto 12px auto;
+        }
+
+        .component-table td {
+            padding: 2px 12px;
+        }
+
+        .comp-label {
+            color: #555;
+            font-weight: normal;
+            font-size: 20px;
+            vertical-align: middle;
+        }
+
+        .comp-value {
+            color: #222;
+        }
+
+        .unit-hint {
+            font-size: 15px;
+            color: #555;
+            margin-top: 8px;
+        }
+
+        /* Answer screen */
+        #calculator-screen {
+            font-size: 36px;
+            font-weight: bold;
+            text-align: right;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 8px 16px;
+            min-height: 60px;
+            letter-spacing: 1px;
+            color: #222;
+        }
+
+        /* Calculator buttons */
+        #calc-board {
+            margin-top: 12px;
+        }
+
+        #calc-board .btn {
+            font-size: 20px;
+            width: 64px;
+            height: 52px;
+            margin: 3px;
+        }
+
+        #calc-board .btn-wide {
+            width: 134px;
+        }
+
+        #calc-board .btn-full {
+            width: 208px;
+        }
+
+        .btn-row {
+            margin-bottom: 0;
+        }
+
+        /* Alert overrides */
+        #challenge-screen .alert {
+            font-size: 16px;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="site-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h3 class="text-muted">Passband</h3>
+                </div>
+                <div class="col-xs-6">
+                    <nav>
+                        <ul class="nav nav-pills pull-right">
+                            <li class="active"><a href="./main.html">Game</a></li>
+                            <li><a href="./about.html">About</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+
+            <!-- Left column: challenge + input -->
+            <div class="col-sm-7">
+
+                <!-- Score bar -->
+                <div id="score-display" class="text-muted">
+                    Score: <strong>0</strong>&nbsp;&nbsp;Streak: <strong>0</strong>
+                </div>
+
+                <!-- Challenge display -->
+                <div class="panel panel-default">
+                    <div class="panel-heading"><strong>RC Low-Pass Filter</strong> &mdash; What is the &minus;3&thinsp;dB frequency?</div>
+                    <div class="panel-body text-center" id="challenge-screen">
+                        Loading&hellip;
+                    </div>
+                </div>
+
+                <!-- Answer screen -->
+                <div id="calculator-screen">&mdash;</div>
+
+                <!-- Calculator pad -->
+                <div id="calc-board">
+                    <div class="btn-row">
+                        <button class="btn btn-default" data-digit="7">7</button>
+                        <button class="btn btn-default" data-digit="8">8</button>
+                        <button class="btn btn-default" data-digit="9">9</button>
+                        <button class="btn btn-warning" data-method="backspace">&larr;</button>
+                    </div>
+                    <div class="btn-row">
+                        <button class="btn btn-default" data-digit="4">4</button>
+                        <button class="btn btn-default" data-digit="5">5</button>
+                        <button class="btn btn-default" data-digit="6">6</button>
+                        <button class="btn btn-danger"  data-method="reset">C</button>
+                    </div>
+                    <div class="btn-row">
+                        <button class="btn btn-default" data-digit="1">1</button>
+                        <button class="btn btn-default" data-digit="2">2</button>
+                        <button class="btn btn-default" data-digit="3">3</button>
+                        <button class="btn btn-default" data-digit="0">0</button>
+                    </div>
+                    <div class="btn-row">
+                        <button class="btn btn-default btn-wide" data-digit=".">.</button>
+                        <button class="btn btn-primary  btn-wide" data-method="check">Check</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right column: reference -->
+            <div class="col-sm-5">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><strong>Quick Reference</strong></div>
+                    <div class="panel-body">
+                        <p><strong>Formula:</strong></p>
+                        <p style="font-size:18px; text-align:center;">
+                            f<sub>&minus;3dB</sub> = <sup>1</sup>&frasl;<sub>2&pi;RC</sub>
+                            &nbsp;&asymp;&nbsp; <sup>0.159</sup>&frasl;<sub>RC</sub>
+                        </p>
+                        <hr>
+                        <p><strong>Useful shortcuts:</strong></p>
+                        <ul style="padding-left:18px; font-size:14px;">
+                            <li>2&pi; &asymp; 6.28 &asymp; 6.3</li>
+                            <li>1/(2&pi;) &asymp; 0.159 &asymp; 1/6.3</li>
+                            <li>R&thinsp;=&thinsp;1&thinsp;k&Omega;, C&thinsp;=&thinsp;1&thinsp;&micro;F &rarr; f &asymp; 159 Hz</li>
+                            <li>R&thinsp;=&thinsp;10&thinsp;k&Omega;, C&thinsp;=&thinsp;1&thinsp;&micro;F &rarr; f &asymp; 15.9 Hz</li>
+                            <li>R&thinsp;=&thinsp;1&thinsp;k&Omega;, C&thinsp;=&thinsp;10&thinsp;nF &rarr; f &asymp; 15.9 kHz</li>
+                        </ul>
+                        <hr>
+                        <p style="font-size:13px; color:#888;">
+                            Answers within &plusmn;20% are accepted &mdash; this is a game about
+                            estimation, not exact computation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="./passband_engine.js"></script>
+</body>
+</html>
