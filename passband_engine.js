@@ -86,6 +86,39 @@ var Passband = {
     FREQ_MIN_HZ: 1,
     FREQ_MAX_HZ: 100e6,
 
+    // Difficulty levels — each filters from the master arrays above
+    levels: {
+        easy: {
+            label: 'Easy',
+            description: 'Decade values only (1, 10, 100\u00d7). RC product is always a clean power of ten.',
+            // mantissa must be exactly 1 (i.e. value is a power of 10)
+            filter: function(v) {
+                var log = Math.log10(v);
+                return Math.abs(log - Math.round(log)) < 0.001;
+            }
+        },
+        medium: {
+            label: 'Medium',
+            description: 'E3 series (1.0, 2.2, 4.7 multipliers). Two-step mental multiply required.',
+            // mantissa must be in the E3 set
+            filter: function(v) {
+                var decade = Math.pow(10, Math.floor(Math.log10(v)));
+                var m = Math.round((v / decade) * 10) / 10;
+                return [1.0, 2.2, 4.7].indexOf(m) !== -1;
+            }
+        },
+        hard: {
+            label: 'Hard',
+            description: 'Full E12 series. All standard component values are in play.',
+            filter: function() { return true; }
+        }
+    },
+
+    // Active difficulty
+    currentLevel: 'easy',
+    activeResistors:  [],
+    activeCapacitors: [],
+
     // Game state
     current_r:        null,
     current_c:        null,
@@ -101,6 +134,33 @@ var Passband = {
     challenge_id: 'challenge-screen',
     screen_id:    'calculator-screen',
     score_id:     'score-display',
+
+    setLevel: function(levelKey) {
+        this.currentLevel = levelKey;
+        var f = this.levels[levelKey].filter;
+        this.activeResistors  = this.resistors.filter(function(r)  { return f(r.value); });
+        this.activeCapacitors = this.capacitors.filter(function(c) { return f(c.value); });
+        this.score  = 0;
+        this.streak = 0;
+        this.memory_value = '';
+        this.awaiting_next = false;
+        this.update_score();
+        this.update_level_buttons();
+        this.challenge();
+    },
+
+    update_level_buttons: function() {
+        var current = this.currentLevel;
+        document.querySelectorAll('[data-level]').forEach(function(btn) {
+            if (btn.getAttribute('data-level') === current) {
+                btn.className = btn.className.replace('btn-default', 'btn-primary');
+            } else {
+                btn.className = btn.className.replace('btn-primary', 'btn-default');
+            }
+        });
+        var desc = document.getElementById('level-description');
+        if (desc) desc.textContent = Passband.levels[current].description;
+    },
 
     // Choose display unit so mantissa is between 1 and 999
     freqUnit: function(hz) {
@@ -124,8 +184,8 @@ var Passband = {
         var r, c, freq;
         var attempts = 0;
         do {
-            r = this.resistors[Math.floor(Math.random() * this.resistors.length)];
-            c = this.capacitors[Math.floor(Math.random() * this.capacitors.length)];
+            r = this.activeResistors[Math.floor(Math.random()  * this.activeResistors.length)];
+            c = this.activeCapacitors[Math.floor(Math.random() * this.activeCapacitors.length)];
             freq = 1 / (2 * Math.PI * r.value * c.value);
             attempts++;
         } while ((freq < this.FREQ_MIN_HZ || freq > this.FREQ_MAX_HZ) && attempts < 200);
@@ -268,7 +328,7 @@ $(document).keypress(function(e) {
 });
 
 $(document).ready(function() {
-    Passband.challenge();
+    Passband.setLevel('easy');
 
     $(document).on('click', '.btn[data-digit]', function(e) {
         e.preventDefault();
@@ -281,5 +341,10 @@ $(document).ready(function() {
         if (typeof Passband[method] === 'function') {
             Passband[method]();
         }
+    });
+
+    $(document).on('click', '[data-level]', function(e) {
+        e.preventDefault();
+        Passband.setLevel($(this).data('level'));
     });
 });
